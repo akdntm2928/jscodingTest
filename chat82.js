@@ -17,3 +17,30 @@
 // [1,2,4]를 이용해서 7을 만들 수 있습니다.
 // [1,4,6]을 이용해서 11을 만들 수 있습니다.
 // [2,4,7]을 이용해서 13을 만들 수 있습니다
+
+function solution(arr) {
+
+  let tmp = Array.from({ length: 3 }, () => 0);
+  let answer = 0;
+
+  function DFS(L, n) {
+    if (L == 3) {
+      let val = tmp.reduce((acc,cur)=>acc+cur);
+      let isCheck = true;
+      for(let i = 2; i<=Math.sqrt(val); i++){
+        if(val%i==0) isCheck=false
+      }
+      if(isCheck) answer++;
+    } else {
+      for (let i = n; i < arr.length; i++) {
+        tmp[L]=arr[i];
+        DFS(L+1,i+1);
+      }
+    }
+  }
+  DFS(0,0);
+  return answer;
+
+}
+
+console.log(solution([1,2,7,6,4]));

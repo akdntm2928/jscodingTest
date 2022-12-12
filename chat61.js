@@ -34,8 +34,6 @@
 // padStart 자리수 채우기
 
 function solution(n,board1,board2){
-    let map1 =[];
-    let map2 =[];
     let answer = [];
     for(let i = 0 ; i<board1.length; i++){
         let check1 = board1[i].toString(2).padStart(n,"0");
